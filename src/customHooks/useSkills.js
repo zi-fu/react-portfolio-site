@@ -6,9 +6,9 @@ import { skillReducer, initialState, actionTypes } from '../reducers/skillReduce
 export const useSkills = () => {
   const [state, dispatch] = useReducer(skillReducer, initialState);
 
-  useEffect(() => {
+   useEffect(() => {
     dispatch({ type: actionTypes.fetch });
-    axios.get('https://api.github.com/users/USER_NAME/repos')
+    axios.get('https://api.github.com/users/zi-fu/repos')
       .then((response) => {
         const languageList = response.data.map(res => res.language)
         const countedLanguageList = generateLanguageCountObj(languageList)
@@ -39,6 +39,6 @@ export const useSkills = () => {
   const sortedLanguageList = () => (
     state.languageList.sort((firstLang, nextLang) =>  nextLang.count - firstLang.count)
   )
-  return [sortedLanguageList, state.requestState, converseCountToPercentage];
 
+  return [sortedLanguageList, state.requestState, converseCountToPercentage];
 }

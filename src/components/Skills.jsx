@@ -4,7 +4,7 @@ import { useSkills } from '../customHooks/useSkills';
 
 export const Skills = () => {
   const [sortedLanguageList, fetchRequestState, converseCountToPercentage] = useSkills();
-
+  
   return (
     <div id="skills">
       <div className="container">
@@ -18,18 +18,18 @@ export const Skills = () => {
             )
           }
           {
-           fetchRequestState === requestStates.success && (
-              sortedLanguageList().map((item, index) => (
-               <div className="skill-item" key={index}>
-                 <p className="description"><strong>{item.language}</strong></p>
-                 <Circle
-                   animate
-                   progress={converseCountToPercentage(item.count)}
-                 />
-               </div>
-             ))
-           )
-         }
+            fetchRequestState === requestStates.success && (
+                sortedLanguageList().map((item, index) => (
+                <div className="skill-item" key={index}>
+                  <p className="description"><strong>{item.language}</strong></p>
+                  <Circle
+                    animate
+                    progress={converseCountToPercentage(item.count)}
+                  />
+                </div>
+              ))
+            )
+          }
           {
             fetchRequestState === requestStates.error && (
               <p className="description">エラーが発生しました</p>
